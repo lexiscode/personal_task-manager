@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->dateTime('due_date');
-            $table->boolean('status');
+            $table->string('status');
             $table->timestamps();
         });
     }
