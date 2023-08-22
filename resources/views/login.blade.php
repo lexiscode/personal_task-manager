@@ -11,19 +11,20 @@
 
             <!-- Display registration success message if it exists -->
             @if(session('success'))
-                <div class="alert alert-success">
+                <div id="success_message">
                     {{ session('success') }}
                 </div>
             @endif
             <!-- Display login error message if it exists -->
             @if(session('login_error'))
-                <div class="alert alert-danger">
+                <div id="error_message">
                     {{ session('login_error') }}
                 </div>
             @endif
 
             <form action="{{ route('client.login') }}" method="POST">
                 @csrf
+                <br>
                 <div class="form-group">
                     <label for="email">Email Address:</label>
                     <input type="text" class="form-control" name="email" id="email" placeholder="Enter your email address" >

@@ -17,6 +17,15 @@
         <a href="{{ route('client.signup') }}" class="button">Register</a>
         <a href="{{ route('client.signin') }}" class="button">Login</a>
     </div>
+
+    <!-- Assuming this is a blade template -->
+    @if(Auth::check())
+    <form action="{{ route('client.logout') }}" method="POST">
+        @csrf
+        <button type="submit" class="btn btn-link">Logout</button>
+    </form>
+    @endif
+    
 </div>
 
 @endsection

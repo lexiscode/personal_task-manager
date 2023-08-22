@@ -37,7 +37,7 @@ class LoginController extends Controller
             return redirect()->route('home')->with('success', 'You are now logged in!');
         } else {
             // Store login error message in session
-            Session::put('login_error', 'Invalid credentials');
+            Session::put('login_error', 'Your login credentials are invalid');
 
             return redirect()->back()->onlyInput('email');
         }

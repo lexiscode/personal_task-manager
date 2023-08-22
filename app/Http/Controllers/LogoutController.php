@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LogoutController extends Controller
 {
-    
+
     /**
      * Logout the authenticated user
      */
@@ -18,6 +18,6 @@ class LogoutController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('client.signin');
+        return redirect()->route('client.signin')->with('success', 'You have been logged out!');
     }
 }
