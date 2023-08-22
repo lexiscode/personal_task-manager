@@ -6,12 +6,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
 */
 
 Route::get('/', [HomeController::class, '__invoke'])->name('home');
@@ -26,4 +26,5 @@ Route::group(['as'=>'client.', 'prefix' =>'client'], function(){
     Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 });
 
+Route::resource('task', TaskController::class);
 
