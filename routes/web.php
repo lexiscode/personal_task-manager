@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ClientController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use App\Http\Controllers\ClientController;
 Route::get('/', [HomeController::class, '__invoke'])->name('home');
 
 Route::group(['as'=>'client.', 'prefix' =>'client'], function(){
-    Route::post('register', [ClientController::class, 'signup'])->name('signup');
-    Route::post('login', [ClientController::class, 'signin'])->name('signin');
+    Route::get('register', [RegisterController::class, 'signup'])->name('signup');
+    Route::get('login', [LoginController::class, 'signin'])->name('signin');
 });
 
