@@ -13,10 +13,10 @@ use App\Http\Controllers\ClientController;
 */
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, '__invoke'])->name('home');
 
 Route::group(['as'=>'client.', 'prefix' =>'client'], function(){
-    Route::get('signup', [ClientController::class, 'signup'])->name('signup');
-    Route::get('signin', [ClientController::class, 'signin'])->name('signin');
+    Route::post('register', [ClientController::class, 'signup'])->name('signup');
+    Route::post('login', [ClientController::class, 'signin'])->name('signin');
 });
 
