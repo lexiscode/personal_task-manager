@@ -8,13 +8,16 @@ use App\Models\Task;
 class TaskController extends Controller
 {
 
+   
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource and display a listing of the resource also.
      */
     public function create()
     {
-        return view('tasks');
+        $tasks = Task::all();
+
+        return view('tasks', compact('tasks'));
     }
 
     /**
@@ -22,7 +25,10 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Task::create($request->all());
+
+        return redirect()->route('task.create');
+
     }
 
     /**
@@ -30,7 +36,7 @@ class TaskController extends Controller
      */
     public function show(string $id)
     {
-        //
+
     }
 
     /**

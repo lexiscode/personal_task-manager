@@ -38,7 +38,8 @@
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <form action="" method="POST" autocomplete="off">
+                    <form action="{{ route('task.store') }}" method="POST">
+                        @csrf
                     <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Add a Task</h1>
@@ -109,7 +110,7 @@
 
             <tbody align="center">
                 @foreach ($tasks as $task)
-                @endforeach
+
                     <tr>
                         <td>{{ $task->id }}</td>
                         <td>{{ $task->title }}</td>
@@ -117,11 +118,11 @@
                         <td>{{ $task->due_date }}</td>
                         <td>{{ $task->status }}</td>
                         <td>
-                            <a href="modify_products?delete=<?= $row_data['id']; ?>" class="btn btn-danger"><i class="fas fa-trash"></i>Delete</a>
-                            <a href="edit_product?id=<?= $row_data['id']; ?>" class="btn btn-primary"><i class="fas fa-edit"></i>Update</a>
+                            <a href="task/{{ $task->id }}" class="btn btn-danger"><i class="fas fa-trash"></i>Delete</a>
+                            <a href="task/{{ $task->id }}/edit" class="btn btn-primary"><i class="fas fa-edit"></i>Update</a>
                         </td>
                     </tr>
-                <?php endforeach; ?>
+                @endforeach
             </tbody>
 
             @empty($tasks)
