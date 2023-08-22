@@ -13,11 +13,16 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-
 Route::get('/', [HomeController::class, '__invoke'])->name('home');
 
 Route::group(['as'=>'client.', 'prefix' =>'client'], function(){
-    Route::get('register', [RegisterController::class, 'signup'])->name('signup');
-    Route::get('login', [LoginController::class, 'signin'])->name('signin');
+    Route::get('register', [RegisterController::class, 'create'])->name('signup');
+    Route::post('register', [RegisterController::class, 'store'])->name('store');
+
+    Route::get('login', [LoginController::class, 'create'])->name('signin');
+    Route::post('login', [LoginController::class, 'verify'])->name('login');
+
+    Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 });
+
 

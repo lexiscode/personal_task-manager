@@ -2,6 +2,14 @@
 
 @section('homepage')
 
+
+<!-- Display login success message if it exists -->
+@if(session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+
 <div class="welcome-container">
     <h1>Welcome to Your Personal Task Manager</h1>
     <p>Your all-in-one solution for managing tasks effectively.</p>

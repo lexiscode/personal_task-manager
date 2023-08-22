@@ -9,18 +9,32 @@
         </div>
         <div class="card-body">
 
-            <form action="" method="POST">
+            <!-- Display registration success message if it exists -->
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            <!-- Display login error message if it exists -->
+            @if(session('login_error'))
+                <div class="alert alert-danger">
+                    {{ session('login_error') }}
+                </div>
+            @endif
+
+            <form action="{{ route('client.login') }}" method="POST">
+                @csrf
                 <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" class="form-control" name="username" id="username" placeholder="Enter your username" >
+                    <label for="email">Email Address:</label>
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Enter your email address" >
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" class="form-control" name="user_password" id="password" placeholder="Enter your password" >
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" >
                 </div>
 
                 <br>
-                <button type="submit" name="signin" class="btn btn-primary btn-register">Sign In</button>
+                <button type="submit" class="btn btn-primary btn-register">Sign In</button>
             </form>
 
         </div>

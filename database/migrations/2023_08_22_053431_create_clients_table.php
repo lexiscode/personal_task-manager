@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::connection('task_manager')->create('record_users', function (Blueprint $table) {
+        Schema::connection('task_manager')->create('clients', function (Blueprint $table) {
             $table->id();
             $table->string('full_name', 100);
             $table->string('username', 100);
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('record_users');
+        Schema::dropIfExists('clients');
     }
 };
