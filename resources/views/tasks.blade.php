@@ -50,13 +50,14 @@
                         <!--Add Task Form-->
                         <div class="w-50 m-auto">
                             <label for="title">Title:</label>
-                            <input class="form-control" type="text" name="title" id="title" placeholder="Enter Task To Add in Todo">
+                            <input class="form-control" type="text" name="title" id="title" placeholder="Enter Task To Add">
                             <br>
                             <label for="description">Description:</label>
-                            <input class="form-control" type="text" name="description" id="description">
+
+                            <textarea id="description" name="description" rows="2" class="form-control" placeholder="Enter your description here..."></textarea>
                             <br>
                             <label for="due_date">Due Date:</label>
-                            <input class="form-control" type="date" name="due_date" id="due_date" placeholder="Enter Task To Add in Todo">
+                            <input class="form-control" type="date" name="due_date" id="due_date">
                             <br>
                             <label for="status">Status:</label>
                             <select name="status">
