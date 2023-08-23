@@ -52,7 +52,7 @@
                                 <br>
                                 <label for="status">Status:</label>
                                 <select name="status">
-                                    <option value="pending" selected>Pending</option>
+                                    <option value="not-started" selected>Not Started</option>
                                     <option value="in-progress">In Progress</option>
                                     <option value="completed">Completed</option>
                                 </select>
@@ -123,9 +123,14 @@
                         // Determine if the task is nearing its due date
                         $isNearingDueDate = $timeDifference <= $threshold;
 
-                    @endphp
+                        // Determine if the task is due or overdue
+                        $isDueOrOverdue = $timeDifference <= 0;
 
-                    <tr class="{{ $isNearingDueDate ? 'nearing-due-date' : '' }}">
+                    @endphp
+                    
+                    {{-- achieve a separate color functionality for tasks that are "near due date" and "due (or overdue)" --}}
+                    <tr class="{{ $isNearingDueDate ? 'nearing-due-date' : '' }}{{ $isNearingDueDate && $isDueOrOverdue ? ' ' : '' }}{{ $isDueOrOverdue ? 'due-or-overdue' : '' }}">
+
                         <td>{{ $task->id }}</td>
                         <td>{{ $task->title }}</td>
                         <td>{{ $task->description }}</td>

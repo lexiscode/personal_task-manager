@@ -31,3 +31,9 @@
     background-color: #ffdddd;
     color: #f00;
 }
+
+/* Styling for due or overdue tasks */
+.due-or-overdue {
+    background-color: rgb(135, 238, 135);
+    color: white;
+}

@@ -25,7 +25,7 @@
             <label for="status">Status:</label>
             <select name="status" id="status" required>
                 @php
-                $statuses = ["pending", "in-progress", "completed"];
+                $statuses = ["not-started", "in-progress", "completed"];
 
                 foreach ($statuses as $type) {
                     $selected = ($type === $task->status) ? "selected" : "";
