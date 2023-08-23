@@ -8,14 +8,13 @@ use App\Models\Task;
 class TaskController extends Controller
 {
 
-
-
     /**
      * Show the form for creating a new resource and display a listing of the resource also.
      */
     public function create()
     {
-        $tasks = Task::all();
+        // Changed all() to simplePaginate()
+        $tasks = Task::simplePaginate(4);
 
         return view('tasks', compact('tasks'));
     }
