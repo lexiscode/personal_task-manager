@@ -12,7 +12,7 @@
 
 <div class="container-fluid">
     <!--Introduction header-->
-    <h1 class="text-center my-4 py-4" style="font-family: Tahoma, Verdana, Segoe, sans-serif">Welcome To My ToDo List</h1>
+    <h1 class="text-center my-4 py-4" style="font-family: Tahoma, Verdana, Segoe, sans-serif">Welcome To My ToDo App</h1>
 
     <div class="container text-center">
         <div class="row">
@@ -84,19 +84,29 @@
         </div>
     </div>
 
-    <br>
+
     <!--Horizontal line demacation-->
     <hr class="bg-dark w-50 m-auto">
 
-    <div class="table-container">
-        <h1>Your Lists</h1>
+    <div class="table-container w-50 m-auto">
 
+        <!-- The filter field -->
+        <div class="mb-3">
+            <label for="statusFilter" class="form-label">Filter by Status:</label>
+            <select class="form-select" id="statusFilter" onchange="filterTasks()">
+                <option value="all">All</option>
+                <option value="pending">Not Started</option>
+                <option value="in-progress">In Progress</option>
+                <option value="completed">Completed</option>
+            </select>
+        </div>
+
+        <!-- Tasks information -->
         <table class="custom-table">
             <thead style="text-align: center">
                 <tr>
-                <th scope="col">#ID</th>
+
                 <th scope="col">Title</th>
-                <th scope="col">Description</th>
                 <th scope="col">Due Date</th>
                 <th scope="col">Status</th>
                 <th scope="col">Action</th>
@@ -105,9 +115,6 @@
             </thead>
 
             <tbody style="text-align: center">
-                @empty($tasks)
-                <p>No lists found.</p>
-                @endempty
 
                 @foreach ($tasks as $task)
 
@@ -127,24 +134,24 @@
                         $isDueOrOverdue = $timeDifference <= 0;
 
                     @endphp
-                    
+
                     {{-- achieve a separate color functionality for tasks that are "near due date" and "due (or overdue)" --}}
                     <tr class="{{ $isNearingDueDate ? 'nearing-due-date' : '' }}{{ $isNearingDueDate && $isDueOrOverdue ? ' ' : '' }}{{ $isDueOrOverdue ? 'due-or-overdue' : '' }}">
 
-                        <td>{{ $task->id }}</td>
                         <td>{{ $task->title }}</td>
-                        <td>{{ $task->description }}</td>
                         <td>{{ $task->due_date }}</td>
-                        <td>{{ $task->status }}</td>
+                        <td class="status-cell">{{ $task->status }}</td>
                         <td>
+                            <!-- This below is the show button, imported. -->
+                            @include('partials.show')
+
                             <form action="{{ route('task.destroy', $task->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">🗑️ Delete</button>
                             </form>
-
-                            <a href="{{ route('task.edit', $task->id) }}" style="display: inline;"><button type="button" class="btn btn-warning">📝 Update</button></a>
                         </td>
+
                     </tr>
                 @endforeach
             </tbody>
