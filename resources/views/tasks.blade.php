@@ -14,6 +14,18 @@
     <!--Introduction header-->
     <h1 class="text-center my-4 py-4" style="font-family: Tahoma, Verdana, Segoe, sans-serif">Welcome To My ToDo App</h1>
 
+    {{-- Search Functionality --}}
+    <form action="{{ route('task.search') }}" method="GET">
+
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search tasks..." name="query">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+    </form>
+
+
+
+
     <div class="container text-center">
         <div class="row">
             <!-- GRID 1 -->
@@ -95,7 +107,7 @@
             <label for="statusFilter" class="form-label">Filter by Status:</label>
             <select class="form-select" id="statusFilter" onchange="filterTasks()">
                 <option value="all">All</option>
-                <option value="pending">Not Started</option>
+                <option value="not-started">Not Started</option>
                 <option value="in-progress">In Progress</option>
                 <option value="completed">Completed</option>
             </select>
@@ -116,44 +128,49 @@
 
             <tbody style="text-align: center">
 
-                @foreach ($tasks as $task)
+                @if($tasks->isEmpty())
+                    <p>No tasks found.</p>
+                @else
 
-                    @php
-                        // Calculate due date proximity (in seconds)
-                        $dueDate = strtotime($task->due_date);
-                        $currentDate = strtotime(date('Y-m-d'));
-                        $timeDifference = $dueDate - $currentDate;
+                    @foreach ($tasks as $task)
 
-                        // Define a threshold
-                        $threshold = 1 * 24 * 60 * 60; // 1 day in seconds
+                        @php
+                            // Calculate due date proximity (in seconds)
+                            $dueDate = strtotime($task->due_date);
+                            $currentDate = strtotime(date('Y-m-d'));
+                            $timeDifference = $dueDate - $currentDate;
 
-                        // Determine if the task is nearing its due date
-                        $isNearingDueDate = $timeDifference <= $threshold;
+                            // Define a threshold
+                            $threshold = 1 * 24 * 60 * 60; // 1 day in seconds
 
-                        // Determine if the task is due or overdue
-                        $isDueOrOverdue = $timeDifference <= 0;
+                            // Determine if the task is nearing its due date
+                            $isNearingDueDate = $timeDifference <= $threshold;
 
-                    @endphp
+                            // Determine if the task is due or overdue
+                            $isDueOrOverdue = $timeDifference <= 0;
 
-                    {{-- achieve a separate color functionality for tasks that are "near due date" and "due (or overdue)" --}}
-                    <tr class="{{ $isNearingDueDate ? 'nearing-due-date' : '' }}{{ $isNearingDueDate && $isDueOrOverdue ? ' ' : '' }}{{ $isDueOrOverdue ? 'due-or-overdue' : '' }}">
+                        @endphp
 
-                        <td>{{ $task->title }}</td>
-                        <td>{{ $task->due_date }}</td>
-                        <td class="status-cell">{{ $task->status }}</td>
-                        <td>
-                            <!-- This below is the show button, imported. -->
-                            @include('partials.show')
+                        {{-- achieve a separate color functionality for tasks that are "near due date" and "due (or overdue)" --}}
+                        <tr class="{{ $isNearingDueDate ? 'nearing-due-date' : '' }}{{ $isNearingDueDate && $isDueOrOverdue ? ' ' : '' }}{{ $isDueOrOverdue ? 'due-or-overdue' : '' }}">
 
-                            <form action="{{ route('task.destroy', $task->id) }}" method="POST" style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">🗑️ Delete</button>
-                            </form>
-                        </td>
+                            <td>{{ $task->title }}</td>
+                            <td>{{ $task->due_date }}</td>
+                            <td class="status-cell">{{ $task->status }}</td>
+                            <td>
+                                <!-- This below is the show button, imported. -->
+                                @include('partials.show')
 
-                    </tr>
-                @endforeach
+                                <form action="{{ route('task.destroy', $task->id) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">🗑️ Delete</button>
+                                </form>
+                            </td>
+
+                        </tr>
+                    @endforeach
+                @endif
             </tbody>
 
         </table>

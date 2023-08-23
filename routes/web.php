@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,7 @@ Route::group(['as'=>'client.', 'prefix' =>'client'], function(){
 });
 
 Route::resource('task', TaskController::class);
+
+Route::get('search', [SearchController::class, 'search'])->name('task.search');
+
 
