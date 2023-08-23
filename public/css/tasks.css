@@ -1,6 +1,33 @@
 
+/* Basic styling to mimic Bootstrap table appearance */
+.table-container {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    font-size: 14px;
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+
+}
+
+.custom-table th {
+    background-color: #343a40;
+    color: white;
+}
+
+/* Styling for nearing due date tasks */
 .nearing-due-date {
     background-color: #ffdddd;
     color: #f00;
-    
 }

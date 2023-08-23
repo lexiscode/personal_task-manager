@@ -88,10 +88,10 @@
     <!--Horizontal line demacation-->
     <hr class="bg-dark w-50 m-auto">
 
-    <div class="container-fluid">
+    <div class="table-container">
         <h1>Your Lists</h1>
 
-        <table class="table table-dark table-hover">
+        <table class="custom-table">
             <thead style="text-align: center">
                 <tr>
                 <th scope="col">#ID</th>
@@ -105,20 +105,25 @@
             </thead>
 
             <tbody style="text-align: center">
+                @empty($tasks)
+                <p>No lists found.</p>
+                @endempty
+
                 @foreach ($tasks as $task)
 
-                @php
-                    // Calculate due date proximity (in seconds)
-                    $dueDate = strtotime($task->due_date);
-                    $currentDate = time();
-                    $timeDifference = $dueDate - $currentDate;
+                    @php
+                        // Calculate due date proximity (in seconds)
+                        $dueDate = strtotime($task->due_date);
+                        $currentDate = strtotime(date('Y-m-d'));
+                        $timeDifference = $dueDate - $currentDate;
 
-                    // Define a threshold
-                    $threshold = 24 * 60 * 60; // 24 hours in seconds
+                        // Define a threshold
+                        $threshold = 1 * 24 * 60 * 60; // 1 day in seconds
 
-                    // Determine if the task is nearing its due date
-                    $isNearingDueDate = $timeDifference <= $threshold;
-                @endphp
+                        // Determine if the task is nearing its due date
+                        $isNearingDueDate = $timeDifference <= $threshold;
+
+                    @endphp
 
                     <tr class="{{ $isNearingDueDate ? 'nearing-due-date' : '' }}">
                         <td>{{ $task->id }}</td>
@@ -138,10 +143,6 @@
                     </tr>
                 @endforeach
             </tbody>
-
-            @empty($tasks)
-                <p>No lists found.</p>
-            @endempty
 
         </table>
     </div>
