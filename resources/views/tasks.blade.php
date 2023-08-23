@@ -14,19 +14,18 @@
     <!--Introduction header-->
     <h1 class="text-center my-4 py-4" style="font-family: Tahoma, Verdana, Segoe, sans-serif">Welcome To My ToDo App</h1>
 
-    {{-- Search Functionality --}}
-    <form action="{{ route('task.search') }}" method="GET">
-
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search tasks..." name="query">
-            <button class="btn btn-outline-secondary" type="submit">Search</button>
-        </div>
-    </form>
-
-
-
-
     <div class="container text-center">
+
+        {{-- Search Functionality --}}
+        <form action="{{ route('task.search') }}" method="GET">
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search tasks..." name="query">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </div>
+
+        </form>
+
         <div class="row">
             <!-- GRID 1 -->
             <div class="col">
