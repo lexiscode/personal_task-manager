@@ -9,17 +9,8 @@
 </div>
 @endif
 
-<!-- Assuming this is a blade template -->
-@if(Auth::check())
-<form action="{{ route('client.logout') }}" method="POST">
-    @csrf
-    <button type="submit" class="btn btn-link">Logout</button>
-</form>
-@endif
 
-
-
-<div class="container">
+<div class="container-fluid">
     <!--Introduction header-->
     <h1 class="text-center my-4 py-4" style="font-family: Tahoma, Verdana, Segoe, sans-serif">Welcome To My ToDo List</h1>
 
@@ -40,40 +31,40 @@
                 <div class="modal-dialog">
                     <form action="{{ route('task.store') }}" method="POST">
                         @csrf
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Add a Task</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-
-                        <!--Add Task Form-->
-                        <div class="w-50 m-auto">
-                            <label for="title">Title:</label>
-                            <input class="form-control" type="text" name="title" id="title" placeholder="Enter Task To Add">
-                            <br>
-                            <label for="description">Description:</label>
-
-                            <textarea id="description" name="description" rows="2" class="form-control" placeholder="Enter your description here..."></textarea>
-                            <br>
-                            <label for="due_date">Due Date:</label>
-                            <input class="form-control" type="date" name="due_date" id="due_date">
-                            <br>
-                            <label for="status">Status:</label>
-                            <select name="status">
-                                <option value="pending" selected>Pending</option>
-                                <option value="in-progress">In Progress</option>
-                                <option value="completed">Completed</option>
-                            </select>
-                            <br>
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Add a Task</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+                        <div class="modal-body">
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                    </div>
+                            <!--Add Task Form-->
+                            <div class="w-50 m-auto">
+                                <label for="title">Title:</label>
+                                <input class="form-control" type="text" name="title" id="title" placeholder="Enter Task To Add">
+                                <br>
+                                <label for="description">Description:</label>
+
+                                <textarea id="description" name="description" rows="2" class="form-control" placeholder="Enter your description here..."></textarea>
+                                <br>
+                                <label for="due_date">Due Date:</label>
+                                <input class="form-control" type="date" name="due_date" id="due_date">
+                                <br>
+                                <label for="status">Status:</label>
+                                <select name="status">
+                                    <option value="pending" selected>Pending</option>
+                                    <option value="in-progress">In Progress</option>
+                                    <option value="completed">Completed</option>
+                                </select>
+                                <br>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                        </div>
                     </form>
                 </div>
                 </div>
@@ -82,9 +73,12 @@
             <!-- GRID 2 -->
             <div class="col" align="left">
 
-                <form action="" method="POST">
-                    <button type="submit" class="btn btn-secondary" name="clearLists">Clear Lists</button>
-                </form>
+                @if(Auth::check())
+                    <form action="{{ route('client.logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-secondary">Logout</button>
+                    </form>
+                @endif
 
             </div>
         </div>
@@ -98,7 +92,7 @@
         <h1>Your Lists</h1>
 
         <table class="table table-dark table-hover">
-            <thead align="center">
+            <thead style="text-align: center">
                 <tr>
                 <th scope="col">#ID</th>
                 <th scope="col">Title</th>
@@ -106,21 +100,40 @@
                 <th scope="col">Due Date</th>
                 <th scope="col">Status</th>
                 <th scope="col">Action</th>
+
                 </tr>
             </thead>
 
-            <tbody align="center">
+            <tbody style="text-align: center">
                 @foreach ($tasks as $task)
 
-                    <tr>
+                @php
+                    // Calculate due date proximity (in seconds)
+                    $dueDate = strtotime($task->due_date);
+                    $currentDate = time();
+                    $timeDifference = $dueDate - $currentDate;
+
+                    // Define a threshold
+                    $threshold = 24 * 60 * 60; // 24 hours in seconds
+
+                    // Determine if the task is nearing its due date
+                    $isNearingDueDate = $timeDifference <= $threshold;
+                @endphp
+
+                    <tr class="{{ $isNearingDueDate ? 'nearing-due-date' : '' }}">
                         <td>{{ $task->id }}</td>
                         <td>{{ $task->title }}</td>
                         <td>{{ $task->description }}</td>
                         <td>{{ $task->due_date }}</td>
                         <td>{{ $task->status }}</td>
                         <td>
-                            <a href="task/{{ $task->id }}" class="btn btn-danger"><i class="fas fa-trash"></i>Delete</a>
-                            <a href="task/{{ $task->id }}/edit" class="btn btn-primary"><i class="fas fa-edit"></i>Update</a>
+                            <form action="{{ route('task.destroy', $task->id) }}" method="POST" style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">🗑️ Delete</button>
+                            </form>
+
+                            <a href="{{ route('task.edit', $task->id) }}" style="display: inline;"><button type="button" class="btn btn-warning">📝 Update</button></a>
                         </td>
                     </tr>
                 @endforeach

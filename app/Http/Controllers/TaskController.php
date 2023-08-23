@@ -8,7 +8,7 @@ use App\Models\Task;
 class TaskController extends Controller
 {
 
-   
+
 
     /**
      * Show the form for creating a new resource and display a listing of the resource also.
@@ -36,7 +36,7 @@ class TaskController extends Controller
      */
     public function show(string $id)
     {
-
+        //
     }
 
     /**
@@ -44,7 +44,9 @@ class TaskController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $task = Task::findOrFail($id);
+
+        return view('task_edit', compact('task'));
     }
 
     /**
@@ -52,7 +54,10 @@ class TaskController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $task->update($request->all());
+
+        return redirect()->route('task.create');
     }
 
     /**
@@ -60,6 +65,9 @@ class TaskController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $task = Task::findOrFail($id);
+        $task->delete();
+
+        return redirect()->route('task.create');
     }
 }
