@@ -17,9 +17,13 @@ use App\Http\Controllers\CategoryController;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', [HomeController::class, '__invoke'])->name('home');
 
-Route::group(['as'=>'client.', 'prefix' =>'client'], function(){
+// Routes that should be accessible only for non-logged-in users
+Route::middleware('guest')->group(function () {
+
+    Route::get('/', [HomeController::class, '__invoke'])->name('home');
+
+    Route::group(['as'=>'client.', 'prefix' =>'client'], function(){
     Route::get('register', [RegisterController::class, 'create'])->name('signup');
     Route::post('register', [RegisterController::class, 'store'])->name('store');
 
@@ -29,8 +33,17 @@ Route::group(['as'=>'client.', 'prefix' =>'client'], function(){
     Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 });
 
-Route::resource('task', TaskController::class);
+});
 
-Route::get('search', [SearchController::class, 'search'])->name('task.search');
 
-Route::resource('category', CategoryController::class);
+// Routes that should be accessible only for logged-in users
+Route::middleware('auth.check')->group(function () {
+
+    Route::resource('task', TaskController::class);
+
+    Route::get('search', [SearchController::class, 'search'])->name('task.search');
+
+    Route::resource('category', CategoryController::class);
+
+});
+
