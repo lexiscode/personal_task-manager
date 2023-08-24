@@ -1,0 +1,74 @@
+type Query
+{
+    # Fetching all collection from the database
+    tasks: [Task!]! @all
+    clients: [Client!]! @all
+    categories: [Category!]! @all
+
+    # Fetching all collection by pagination, from the database
+    tasks: [Task!]! @paginate
+    clients: [Client!]! @paginate
+    categories: [Category!]! @paginate
+
+    # Fetching specific collection from the database
+    task(id: ID @eq): Task @find
+    client(id: ID @eq): Client @find
+    category(id: ID @eq): Category @find
+}
+
+type Mutation
+{
+    # Create a new Mutation
+    createTask(title: String!, description: String!, due_date: String!, status: String!, category: String!): Task! @create
+    createClient(full_name: String!, username: String!, email: String!, password: String!): Client! @create
+    createCategory(name: String!): Category! @create
+
+    # Update a Mutation
+    updateTask(id: ID!, title: String, description: String, due_date: String, status: String, category: String): Task! @update
+    updateClient(id: ID!, full_name: String, username: String, email: String, password: String): Client! @update
+    updateCategory(id: ID!, name: String): Category! @update
+
+    # Delete a Mutation
+    deleteTask(id: ID! @whereKey): Task @delete
+    deleteClient(id: ID! @whereKey): Client @delete
+    deleteCategory(id: ID! @whereKey): Category @delete
+
+    # Upsert a Mutation
+    upsertTask(id: ID!, title: String!, description: String!, due_date: String!, status: String!, category: String!): Task! @upsert
+    upsertClient(id: ID!, full_name: String!, username: String!, email: String!, password: String!): Client! @upsert
+    upsertCategory(id: ID!, name: String!): Category! @upsert
+}
+
+
+type Task
+{
+    id: ID
+    title: String
+    description: String
+    due_date: String
+    status: String
+    category: String
+    created_at: String
+    updated_at: String
+}
+
+type Client
+{
+    id: ID
+    full_name: String
+    username: String
+    email: String
+    password: String
+    created_at: String
+    updated_at: String
+}
+
+type Category
+{
+    id: ID
+    name: String
+    created_at: String
+    updated_at: String
+}
+
+

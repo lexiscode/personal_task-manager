@@ -16,15 +16,7 @@
 
     <div class="container text-center">
 
-        {{-- Search Functionality --}}
-        <form action="{{ route('task.search') }}" method="GET">
 
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search tasks..." name="query">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
-            </div>
-
-        </form>
 
         <div class="row">
             <!-- GRID 1 -->
@@ -108,6 +100,17 @@
 
             </div>
         </div>
+
+        {{-- Search Functionality --}}
+        <form action="{{ route('task.search') }}" method="GET">
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search tasks..." name="query">
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </div>
+
+        </form>
+
     </div>
 
 
