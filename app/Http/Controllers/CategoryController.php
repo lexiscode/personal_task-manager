@@ -16,7 +16,7 @@ class CategoryController extends Controller
 
         $categories = Category::simplePaginate(4);
 
-        return view('category', compact('categories'));
+        return view('category_views.category', compact('categories'));
     }
 
     /**
@@ -45,7 +45,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        return view('category_edit', compact('category'));
+        return view('category_views.category_edit', compact('category'));
     }
 
     /**

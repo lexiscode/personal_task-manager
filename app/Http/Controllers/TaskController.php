@@ -20,7 +20,7 @@ class TaskController extends Controller
 
         $categories = Category::all();
 
-        return view('tasks', compact('tasks', 'categories'));
+        return view('task_views.tasks', compact('tasks', 'categories'));
     }
 
     /**
@@ -51,7 +51,7 @@ class TaskController extends Controller
 
         $categories = Category::all();
 
-        return view('task_edit', compact('task', 'categories'));
+        return view('task_views.task_edit', compact('task', 'categories'));
     }
 
     /**
@@ -76,3 +76,4 @@ class TaskController extends Controller
         return redirect()->route('task.create');
     }
 }
+

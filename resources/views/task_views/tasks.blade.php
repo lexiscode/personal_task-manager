@@ -16,8 +16,6 @@
 
     <div class="container text-center">
 
-
-
         <div class="row">
             <!-- GRID 1 -->
             <div class="col">
@@ -84,12 +82,12 @@
             </div>
 
             <!-- GRID 2 -->
-            <div class="col" align="center">
+            <div class="col" style="text-align:center">
                 <a href="{{ route('category.create') }}" class="btn btn-info">Categories</a>
             </div>
 
             <!-- GRID 3 -->
-            <div class="col" align="left">
+            <div class="col" style="text-align:left">
 
                 @if(Auth::check())
                     <form action="{{ route('client.logout') }}" method="POST">

@@ -24,15 +24,14 @@ Route::middleware('guest')->group(function () {
     Route::get('/', [HomeController::class, '__invoke'])->name('home');
 
     Route::group(['as'=>'client.', 'prefix' =>'client'], function(){
+
     Route::get('register', [RegisterController::class, 'create'])->name('signup');
     Route::post('register', [RegisterController::class, 'store'])->name('store');
 
     Route::get('login', [LoginController::class, 'create'])->name('signin');
     Route::post('login', [LoginController::class, 'verify'])->name('login');
 
-    Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
-});
-
+    });
 });
 
 
@@ -47,3 +46,5 @@ Route::middleware('auth.check')->group(function () {
 
 });
 
+// Accessible route for all users
+Route::post('logout', [LogoutController::class, 'logout'])->name('client.logout');

@@ -17,7 +17,7 @@ class SearchController extends Controller
             ->get();
 
 
-        return view('search', compact('task_search'));
+        return view('task_views.search', compact('task_search'));
     }
 
 }
