@@ -22,8 +22,8 @@
             <input class="form-control" type="date" name="due_date" id="due_date" value="{{ $task->due_date }}">
             <br>
 
-            <label for="status">Status:</label>
-            <select name="status" id="status" required>
+            <label for="status" class="form-label">Status:</label>
+            <select class="form-select" name="status" id="status" required>
                 @php
                 $statuses = ["not-started", "in-progress", "completed"];
 
@@ -33,13 +33,27 @@
                 }
                 @endphp
             </select>
-            <br><br>
+            <br>
+
+            <label for="category" class="form-label">Category:</label>
+            <select class="form-select" name="category" id="category" required>
+                @foreach ($categories as $categoryOption)
+                    <option value="{{ $categoryOption->name }}" {{ $categoryOption->name === $task->category ? 'selected' : '' }}>
+                        {{ $categoryOption->name }}
+                    </option>
+                @endforeach
+            </select>
+            <br>
 
             <div style="text-align: center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-success">Submit</button>
             </div>
 
         </form>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="{{ route('task.create') }}" style="text-decoration: none"><i>Return To Tasks</i></a>
     </div>
 
 @endsection

@@ -62,14 +62,23 @@
                                 <input class="form-control" type="date" name="due_date" id="due_date">
                                 <br>
                                 <label for="status">Status:</label>
-                                <select name="status">
+                                <select name="status" class="form-control">
                                     <option value="not-started" selected>Not Started</option>
                                     <option value="in-progress">In Progress</option>
                                     <option value="completed">Completed</option>
                                 </select>
                                 <br>
-                            </div>
 
+                                <label for="category">Select a category:</label>
+                                <select id="category" name="category" class="form-control">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->name }}">
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -81,7 +90,13 @@
                 </div>
 
             </div>
+
             <!-- GRID 2 -->
+            <div class="col" align="center">
+                <a href="{{ route('category.create') }}" class="btn btn-info">Categories</a>
+            </div>
+
+            <!-- GRID 3 -->
             <div class="col" align="left">
 
                 @if(Auth::check())

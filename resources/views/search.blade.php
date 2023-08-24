@@ -46,6 +46,11 @@
 
             </tbody>
         </table>
+
+        <div style="text-align: center;">
+            <a href="{{ route('task.create') }}" style="text-decoration: none"><i>Return To Tasks</i></a>
+        </div>
+        
     </div>
 </div>
 

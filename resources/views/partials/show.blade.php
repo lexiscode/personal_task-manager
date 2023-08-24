@@ -15,20 +15,21 @@
 
         <h2 style="color: black;">{{ $task->title }}</h2>
         <p style="color: black;"><b>ID:</b> {{ $task->id }}</p>
-        <p style="color: black;">Description: {{ $task->description }}</p>
-        <p style="color: black;">Due Date: {{ $task->due_date }}</p>
-        <p style="color: black;">Status: {{ $task->status }}</p>
+        <p style="color: black;"><b>Description:</b> {{ $task->description }}</p>
+        <p style="color: black;"><b>Due Date:</b> {{ $task->due_date }}</p>
+        <p style="color: black;"><b>Status:</b> {{ $task->status }}</p>
+        <p style="color: black;"><b>Category:</b> {{ $task->category }}</p>
 
         <!--Horizontal line demacation-->
         <hr class="bg-dark w-50 m-auto">
 
-        <p style="color: black;">Date Created: {{ $task->created_at }}</p>
-        <p style="color: black;">Last Updated: {{ $task->updated_at }}</p>
+        <p style="color: black;"><b>Date Created:</b> {{ $task->created_at }}</p>
+        <p style="color: black;"><b>Last Updated:</b> {{ $task->updated_at }}</p>
 
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <a href="{{ route('task.edit', $task->id) }}" style="display: inline;"><button type="button" class="btn btn-warning">📝 Update</button></a>
+        <a href="{{ route('task.edit', $task->id) }}"><button type="button" class="btn btn-warning">📝 Update</button></a>
     </div>
     </div>
 </div>

@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Task;
 use App\Models\Category;
 
-
-class TaskController extends Controller
+class CategoryController extends Controller
 {
 
     /**
@@ -15,12 +13,10 @@ class TaskController extends Controller
      */
     public function create()
     {
-        // Changed all() to simplePaginate()
-        $tasks = Task::simplePaginate(4);
 
-        $categories = Category::all();
+        $categories = Category::simplePaginate(4);
 
-        return view('tasks', compact('tasks', 'categories'));
+        return view('category', compact('categories'));
     }
 
     /**
@@ -28,9 +24,9 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        Task::create($request->all());
+        Category::create($request->all());
 
-        return redirect()->route('task.create');
+        return redirect()->route('category.create');
 
     }
 
@@ -47,11 +43,9 @@ class TaskController extends Controller
      */
     public function edit(string $id)
     {
-        $task = Task::findOrFail($id);
+        $category = Category::findOrFail($id);
 
-        $categories = Category::all();
-
-        return view('task_edit', compact('task', 'categories'));
+        return view('category_edit', compact('category'));
     }
 
     /**
@@ -59,10 +53,10 @@ class TaskController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $task = Task::findOrFail($id);
-        $task->update($request->all());
+        $category = Category::findOrFail($id);
+        $category->update($request->all());
 
-        return redirect()->route('task.create');
+        return redirect()->route('category.create');
     }
 
     /**
@@ -70,9 +64,9 @@ class TaskController extends Controller
      */
     public function destroy(string $id)
     {
-        $task = Task::findOrFail($id);
-        $task->delete();
+        $category = Category::findOrFail($id);
+        $category->delete();
 
-        return redirect()->route('task.create');
+        return redirect()->route('category.create');
     }
 }
