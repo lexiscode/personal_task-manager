@@ -39,7 +39,13 @@
             </form>
 
         </div>
+
     </div>
+
+    <div style="text-align: center; margin-top: 2px;">
+        <a href="{{ route('home') }}" style="text-decoration: none; color: black"><i>Return To Homepage</i></a>
+    </div>
+
 </div>
 
 @endsection

@@ -2,27 +2,35 @@
 
 @section('category_show')
 
-
 <div class="container">
-    <!--Introduction header-->
-    <h1 class="text-center my-4 py-4" style="font-family: Tahoma, Verdana, Segoe, sans-serif">Update Category Name</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <div class="card mt-5">
+                <div class="card-header">
+                    <h2 class="text-center" style="margin-bottom: -3px">Update Category Name</h2>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('category.update', ['category' => $category->id]) }}" method="POST">
+                        @csrf
+                        @method('PUT')
 
-    <div class="w-50 m-auto">
-        <form action="{{ route('category.update', ['category' => $category->id]) }}" method="POST">
-            @csrf
-            @method('PUT')
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Category Name:</label>
+                            <input type="text" name="name" class="form-control" value="{{ $category->name }}" required>
+                        </div>
 
-            <label for="category" class="form-label">Category Name:</label>
-            <input type="text" name="name" class="form-control" value="{{ $category->name }}">
-            </option>
-
-            <br><br>
-
-            <div style="text-align: center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{{ route('category.create') }}" class="text-decoration-none">Return To Categories</a>
+                </div>
             </div>
-
-        </form>
+        </div>
     </div>
+</div>
 
 @endsection
+

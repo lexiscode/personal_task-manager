@@ -48,17 +48,19 @@
                     @foreach ($categories as $category)
 
                         <tr>
-
                             <td>{{ $category->id }}</td>
                             <td>{{ $category->name }}</td>
 
                             <td>
+
+                                <a href="{{ route('category.edit', $category->id) }}" style="display: inline;"><button type="button" class="btn btn-warning">📝 Update</button></a>
+
                                 <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">🗑️ Delete</button>
                                 </form>
-                                <a href="{{ route('category.edit', $category->id) }}" style="display: inline;"><button type="button" class="btn btn-warning">📝 Update</button></a>
+
                             </td>
 
                         </tr>
@@ -81,6 +83,5 @@
     </div>
 
 </div>
-
 
 @endsection

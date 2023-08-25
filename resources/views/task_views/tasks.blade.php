@@ -21,7 +21,7 @@
             <div class="col">
 
                 <!-- Button trigger modal -->
-                <div align="right">
+                <div style="text-align:right">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Add To ToDo
                 </button>
@@ -42,17 +42,17 @@
                             <!--Add Task Form-->
                             <div class="w-50 m-auto">
                                 <label for="title">Title:</label>
-                                <input class="form-control" type="text" name="title" id="title" placeholder="Enter Task To Add">
+                                <input class="form-control" type="text" name="title" id="title" placeholder="Enter Task To Add" required>
                                 <br>
                                 <label for="description">Description:</label>
 
-                                <textarea id="description" name="description" rows="2" class="form-control" placeholder="Enter your description here..."></textarea>
+                                <textarea id="description" name="description" rows="2" class="form-control" placeholder="Enter your description here..." required></textarea>
                                 <br>
                                 <label for="due_date">Due Date:</label>
-                                <input class="form-control" type="date" name="due_date" id="due_date">
+                                <input class="form-control" type="date" name="due_date" id="due_date" required>
                                 <br>
                                 <label for="status">Status:</label>
-                                <select name="status" class="form-control">
+                                <select name="status" class="form-control" required>
                                     <option value="not-started" selected>Not Started</option>
                                     <option value="in-progress">In Progress</option>
                                     <option value="completed">Completed</option>
@@ -60,7 +60,7 @@
                                 <br>
 
                                 <label for="category">Select a category:</label>
-                                <select id="category" name="category" class="form-control">
+                                <select id="category" name="category" class="form-control" required>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->name }}">
                                             {{ $category->name }}
@@ -103,8 +103,8 @@
         <form action="{{ route('task.search') }}" method="GET">
 
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search tasks..." name="query">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
+                <input type="text" class="form-control" placeholder="Search tasks..." name="query" required>
+                <button class="btn btn-outline-secondary" type="submit">🔍 Search</button>
             </div>
 
         </form>
