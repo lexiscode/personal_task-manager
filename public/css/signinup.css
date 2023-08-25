@@ -1,21 +1,77 @@
+/* Add this new CSS file for the registration page */
+/* You can include this CSS file in your register.blade.php file */
+
+/* Center the form vertically */
 .container {
-    max-width: 700px;
-    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-h2 {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-check-label {
-    padding-left: 0;
-}
-
-.btn-register {
+/* Give the card a more professional appearance */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
+    max-width: 400px;
+}
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* Style form inputs */
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Style form labels */
+.form-group label {
+    font-weight: bold;
+}
+
+
+/* Center the "Return to Homepage" link */
+.return-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Style the "Register" button */
+.btn-register {
+    display: block;
+    margin: 0 auto;
+    width: 40%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-register:hover {
+    background-color: #45a049;
 }

@@ -15,7 +15,7 @@
                     <label for="name">Full Name:</label>
                     <input type="text" class="form-control" name="full_name" id="name" placeholder="Enter your name" >
                     @error('full_name')
-                        <code>{{ $message }}</code>
+                        <code class='code'>{{ $message }}</code>
                     @enderror
                 </div>
 
