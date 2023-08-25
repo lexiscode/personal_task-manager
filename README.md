@@ -1,65 +1,101 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p style="text-align: center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
+<p style="text-align: center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Personal Task Manager
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Welcome to the **Personal Task Manager** project! This application is designed to help users manage and keep track of their daily tasks. It employs the Laravel framework for backend development, BootStrap (CSS and JavaScript) for frontend interactions, and GraphQL for efficient data fetching and mutations. The application provides user authentication, task management functionalities, and various other features to enhance the task management experience.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### User Authentication
+- Register: Users can create a new account to get started.
+- Login: Secure login system using Laravel's built-in authentication.
+- Logout: Users can log out when they are done managing their tasks.
 
-## Learning Laravel
+### Task Management
+- Create: Users can create new tasks with a title, description, due date, and status.
+- Read: View a list of all tasks, organized by status.
+- Update: Modify task details or change its status.
+- Delete: Remove tasks that are no longer needed.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Bootstrap Components
+- Task List: All tasks are displayed with filtering options based on status.
+- Task Details: Get an in-depth view of a task's information, edit, or delete it.
+- Add Task: A user-friendly form to add new tasks.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### GraphQL Integration
+- Utilizes the power of GraphQL for efficient data fetching and manipulation.
+- Implements the [lighthouse-php](https://lighthouse-php.com/) package for GraphQL setup.
+- Defines a clear GraphQL schema for users and tasks.
+- Fetches and updates tasks via GraphQL instead of traditional REST APIs.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Simple Notifications
+- Visual cues for task due dates: Tasks nearing their due date change color.
+- Alerts for overdue tasks: Tasks that exceed their due date are highlighted.
 
-## Laravel Sponsors
+### Middleware
+- Security features to control access:
+  - Certain pages are restricted to non-logged-in users.
+  - Specific pages are restricted to logged-in users.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Task Categories
+- Manage tasks in different categories (e.g., Work, Personal, Urgent).
+- Categories are fetched dynamically from the database.
+- Separate CRUD functionality for managing categories.
 
-### Premium Partners
+### Search
+- Use the search bar to find tasks by title or description quickly.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Getting Started
+
+### Prerequisites
+- Make sure you have PHP and Composer installed.
+- You need Node.js and npm to handle frontend dependencies. BUT, alternatively, I will highly recommend you download [laragon](https://laragon.org/download/index.html) web server - which has the following pre-installed (Apache 2.4, Nginx, MySQL 8, PHP 8, Redis, Memcached, Node.js 18, npm, git).
+
+### Installation
+1. Immediately after installing [laragon](https://laragon.org/download/index.html) web server for the first time, you will need to reboot your computer afterwards.
+2. Now into your computer's root directory (e.g. C:), enter these path "laragon/www/".
+3. Inside that directory (/www), clone this repository: `git clone https://github.com/lexiscode/personal_task-manager.git`
+4. Still in this directory (/www), run this command in order to install Laravel globally `composer global require laravel/installer`
+4. Now go to C:\laragon and in that directory, double-click on the Laragon application icon.
+5. Now ensure that you have no other web server running (e.g. XAMMP or any other), then inside the Laragon application click on "StartAll".
+6. Next, still in that Laragon application, click on "Database" button (another GUI displays), ensure the Network Type is: "MariaDB or MySQL (TCP/IP)", if so then click on the "Open" button below the GUI to access the database interface.
+7. Now at the top-left corner of the application, you should see "Laragon.MySQL" database section; right-click on it, then select "Create new", then click on "Database". Please ensure you name the database "task_manager", then click OK.
+8. Now return back to the actual Laragon application, click on "Terminal" button, then navigate to the project directory: `cd personal-task-manager`, and run this migration command: `php artisan migrate`. Though note that, you can choose to either use the Laragon inbuilt terminal or your Git Bash, it's left to you.
+10. Congratulations!!! Now read its Usage documentation.
+
+
+## Usage
+
+To use the Personal Task Manager Application, follow these steps:
+
+1. Open your browser, enter this URL: "http://personal_task-manager.test/" OR alternatively, return back to the actual Laragon application, and right-click anywhere around its blank body (not a button), select "www" and lastly click on the project name "personal_task-manager".
+2. To test GraphiQL for API inside your brower, enter this URL: "http://personal_task-manager.test/graphiql"
+3. That's all.
+
+## Technologies
+
+The Personal Task Manager Application is built using the following technologies:
+
+- **PHP**: A server-side scripting language used for handling data and rendering views.
+- **Laravel**: A free and open-source PHP web framework, intended for the development of web applications following the model–view–controller architectural pattern and based on Symfony.
+- **MySQL**: A database-based storage system used to store product records.
+- **HTML**: A standard markup language for documents designed to be displayed in a web browser. 
+- **CSS**: A frontend styling language used to create appealing visuals for the HTML documents.
+- **Bootstrap**: A front-end framework that facilitates responsive and modern user interface design.
+- **JavaScript**: A powerful programming language used to add interactivity and dynamic behavior to the website.
+-- **jQuery**: A JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and Ajax.
+- **GraphQL**: An open-source data query and manipulation language for APIs and a query runtime engine.
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Contributions to the project are welcome! If you encounter any issues or have suggestions for improvements, please open an issue or submit a pull request.
 
 ## License
 
