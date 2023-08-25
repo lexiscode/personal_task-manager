@@ -60,14 +60,15 @@ Welcome to the **Personal Task Manager** project! This application is designed t
 
 ### Installation
 1. Immediately after installing [laragon](https://laragon.org/download/index.html) web server for the first time, you will need to reboot your computer afterwards.
-2. Now into your computer's root directory (e.g. C:), enter these path `laragon/www/`.
-3. Inside that directory (/www), clone this repository: `git clone https://github.com/lexiscode/personal_task-manager.git`
-4. Still in this directory (/www), run this command in order to install Laravel globally `composer global require laravel/installer`
-4. Now go to `C:\laragon` and in that directory, double-click on the Laragon application icon.
-5. Now ensure that you have no other web server running (e.g. XAMMP or any other), then inside the Laragon application click on  `StartAll`. Do not stop the server.
+2. Now into your computer's root directory (e.g. C:), enter these path `C:/laragon/`. Then double-click on the laragon application icon to open it.
+3. Now ensure that you have no other web server running (e.g. XAMMP or any other), then inside the Laragon application click on  `StartAll`. Do not stop the server.
+4. Then enter into this path directory `C:/laragon/www`, now run this command in order to install Laravel globally `composer global require laravel/installer` 
+5. Now git clone this repository still inside this path directory (`C:/laragon/www`): `git clone https://github.com/lexiscode/personal_task-manager.git`
 6. Next, still in that Laragon application, click on `Database` button (another GUI displays), ensure the Network Type is: `MariaDB or MySQL (TCP/IP)`, if so then click on the `Open` button below the GUI to access the database interface.
-7. Now at the top-left corner of the application, you should see `Laragon.MySQL` database section; right-click on it, then select `Create new`, then click on `Database`. Please ensure you name the database `task_manager`, then click OK.
-8. Next, using Git Bash or the Laragon's inbuilt Terminal, then navigate to the project directory: `cd personal_task-manager`, then and run this command: `composer install`, then again run this next command: `php artisan migrate`.
+7. Now at the top-left corner of the application, you should see `Laragon.MySQL` database section; right-click on it, then select `Create new`, then click on `Database`. Please ensure you name the database `personal_task_manager`, then click OK.
+8. Next, open the project directory (`C:/laragon/www/personal_task-manager`) with any IDE (e.g. VS Code) and locate a file named `.env.example`, rename the file to `.env` only.
+9. Next, generate your own APP_KEY by running this command still from within the project directory (`C:/laragon/www/personal_task-manager`) using Git Bash: `php artisan key:generate`
+8. Then still inside the project directory run this command: `composer install`, then again run this next command: `php artisan migrate`.
 10. Congratulations!!! Now read its Usage documentation below.
 
 
