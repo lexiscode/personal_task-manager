@@ -42,7 +42,7 @@
             <tbody style="text-align: center">
 
                 @if($categories->isEmpty())
-                    <p>No tasks found.</p>
+                    <p>No categories found.</p>
                 @else
 
                     @foreach ($categories as $category)

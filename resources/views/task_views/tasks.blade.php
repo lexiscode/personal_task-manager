@@ -67,6 +67,7 @@
                                         </option>
                                     @endforeach
                                 </select>
+                                <p style="font-size: 12px"><i>No category? Go to "Manage Categories" to create one.</i></p>
 
                             </div>
                         </div>
@@ -83,7 +84,7 @@
 
             <!-- GRID 2 -->
             <div class="col" style="text-align:center">
-                <a href="{{ route('category.create') }}" class="btn btn-info">Categories</a>
+                <a href="{{ route('category.create') }}" class="btn btn-info">Manage Categories</a>
             </div>
 
             <!-- GRID 3 -->
