@@ -65,11 +65,13 @@ Welcome to the **Personal Task Manager** project! This application is designed t
 4. Then enter into this path directory `C:/laragon/www`, now run this command in order to install Laravel globally `composer global require laravel/installer` 
 5. Now git clone this repository still inside this path directory (`C:/laragon/www`): `git clone https://github.com/lexiscode/personal_task-manager.git`
 6. Next, still in that Laragon application, click on `Database` button (another GUI displays), ensure the Network Type is: `MariaDB or MySQL (TCP/IP)`, if so then click on the `Open` button below the GUI to access the database interface.
-7. Now at the top-left corner of the application, you should see `Laragon.MySQL` database section; right-click on it, then select `Create new`, then click on `Database`. Please ensure you name the database `personal_task_manager`, then click OK.
-8. Next, open the project directory (`C:/laragon/www/personal_task-manager`) with any IDE (e.g. VS Code) and locate a file named `.env.example`, rename the file to `.env` only.
-9. Next, generate your own APP_KEY by running this command still from within the project directory (`C:/laragon/www/personal_task-manager`) using Git Bash: `php artisan key:generate`
-8. Then still inside the project directory run this command: `composer install`, then again run this next command: `php artisan migrate`.
-10. Congratulations!!! Now read its Usage documentation below.
+7. Now at the top-left corner of the application, you should see `Laragon.MySQL` database section; right-click on it, then select `Create new`, then click on `Database`. Please ensure you name the database `task_manager`, then click OK.
+8. Next, open the project directory (`C:/laragon/www/personal_task-manager`) with any IDE (e.g. VS Code) and locate a file named `.env.example`, rename the file to `.env` only. 
+9. Then inside that same .env file, find and renamed the value of the DB_DATABASE from `DB_DATABASE=personal_task_manager` to `DB_DATABASE=task_manager`.
+10. Then still inside the project directory (that is, `C:/laragon/www/personal_task-manager`) run this command: `composer install`
+11. Next, generate your own APP_KEY by running this command still from within the project directory: `php artisan key:generate`
+12. Lastly, run this migration command, still from within the project directory: `php artisan migrate`
+13. Congratulations!!! Now read its Usage documentation below.
 
 
 ## Usage
