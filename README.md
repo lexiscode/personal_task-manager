@@ -67,7 +67,7 @@ Welcome to the **Personal Task Manager** project! This application is designed t
 5. Now ensure that you have no other web server running (e.g. XAMMP or any other), then inside the Laragon application click on  `StartAll`. Do not stop the server.
 6. Next, still in that Laragon application, click on `Database` button (another GUI displays), ensure the Network Type is: `MariaDB or MySQL (TCP/IP)`, if so then click on the `Open` button below the GUI to access the database interface.
 7. Now at the top-left corner of the application, you should see `Laragon.MySQL` database section; right-click on it, then select `Create new`, then click on `Database`. Please ensure you name the database `task_manager`, then click OK.
-8. Next, using Git Bash or the Laragon's inbuilt Terminal, then navigate to the project directory: `cd personal_task-manager`, then and run this migration command: `php artisan migrate`.
+8. Next, using Git Bash or the Laragon's inbuilt Terminal, then navigate to the project directory: `cd personal_task-manager`, then and run this command: `composer install`, then again run this next command: `php artisan migrate`.
 10. Congratulations!!! Now read its Usage documentation below.
 
 
