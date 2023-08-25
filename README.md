@@ -1,6 +1,6 @@
-<p style="text-align: center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p style="text-align: center">
+<p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
@@ -60,23 +60,23 @@ Welcome to the **Personal Task Manager** project! This application is designed t
 
 ### Installation
 1. Immediately after installing [laragon](https://laragon.org/download/index.html) web server for the first time, you will need to reboot your computer afterwards.
-2. Now into your computer's root directory (e.g. C:), enter these path "laragon/www/".
+2. Now into your computer's root directory (e.g. C:), enter these path `laragon/www/`.
 3. Inside that directory (/www), clone this repository: `git clone https://github.com/lexiscode/personal_task-manager.git`
 4. Still in this directory (/www), run this command in order to install Laravel globally `composer global require laravel/installer`
-4. Now go to C:\laragon and in that directory, double-click on the Laragon application icon.
-5. Now ensure that you have no other web server running (e.g. XAMMP or any other), then inside the Laragon application click on "StartAll".
-6. Next, still in that Laragon application, click on "Database" button (another GUI displays), ensure the Network Type is: "MariaDB or MySQL (TCP/IP)", if so then click on the "Open" button below the GUI to access the database interface.
-7. Now at the top-left corner of the application, you should see "Laragon.MySQL" database section; right-click on it, then select "Create new", then click on "Database". Please ensure you name the database "task_manager", then click OK.
-8. Now return back to the actual Laragon application, click on "Terminal" button, then navigate to the project directory: `cd personal-task-manager`, and run this migration command: `php artisan migrate`. Though note that, you can choose to either use the Laragon inbuilt terminal or your Git Bash, it's left to you.
-10. Congratulations!!! Now read its Usage documentation.
+4. Now go to `C:\laragon` and in that directory, double-click on the Laragon application icon.
+5. Now ensure that you have no other web server running (e.g. XAMMP or any other), then inside the Laragon application click on  `StartAll`. Do not stop the server.
+6. Next, still in that Laragon application, click on `Database` button (another GUI displays), ensure the Network Type is: `MariaDB or MySQL (TCP/IP)`, if so then click on the `Open` button below the GUI to access the database interface.
+7. Now at the top-left corner of the application, you should see `Laragon.MySQL` database section; right-click on it, then select `Create new`, then click on `Database`. Please ensure you name the database `task_manager`, then click OK.
+8. Next, using Git Bash or the Laragon's inbuilt Terminal, then navigate to the project directory: `cd personal_task-manager`, then and run this migration command: `php artisan migrate`.
+10. Congratulations!!! Now read its Usage documentation below.
 
 
 ## Usage
 
 To use the Personal Task Manager Application, follow these steps:
 
-1. Open your browser, enter this URL: "http://personal_task-manager.test/" OR alternatively, return back to the actual Laragon application, and right-click anywhere around its blank body (not a button), select "www" and lastly click on the project name "personal_task-manager".
-2. To test GraphiQL for API inside your brower, enter this URL: "http://personal_task-manager.test/graphiql"
+1. Open your browser, enter this URL: `http://personal_task-manager.test/` OR alternatively, return back to the actual Laragon application GUI, and "right-click" anywhere around its blank body (not a button), select `www` and lastly click on the project name `personal_task-manager`.
+2. To test GraphiQL for API inside your browser, enter this URL: `http://personal_task-manager.test/graphiql`
 3. That's all.
 
 ## Technologies
