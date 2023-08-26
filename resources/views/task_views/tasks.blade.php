@@ -12,7 +12,7 @@
 
 <div class="container-fluid">
     <!--Introduction header-->
-    <h1 class="text-center my-4 py-4" style="font-family: Tahoma, Verdana, Segoe, sans-serif">Welcome To My ToDo App</h1>
+    <h1 class="text-center my-4 py-4" style="font-family: Tahoma, Verdana, Segoe, sans-serif; font-weight: bold">Lexis-Task Manager</h1>
 
     <div class="container text-center">
 
