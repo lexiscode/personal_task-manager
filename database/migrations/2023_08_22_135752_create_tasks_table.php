@@ -13,12 +13,16 @@ return new class extends Migration
     {
         Schema::connection('task_manager')->create('tasks', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('client_id');
+            
             $table->string('title');
             $table->text('description');
             $table->date('due_date');
             $table->string('status');
             $table->string('category');
             $table->timestamps();
+
+            $table->foreign('client_id')->references('id')->on('clients');
         });
     }
 

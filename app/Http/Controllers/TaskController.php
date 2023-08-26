@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Task;
 use App\Models\Category;
-
+use App\Models\Client;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -15,10 +16,10 @@ class TaskController extends Controller
      */
     public function create()
     {
-        // Changed all() to simplePaginate()
-        $tasks = Task::simplePaginate(4);
+        $client = Auth::user();
+        $tasks = Client::find($client->id)->tasks()->simplePaginate(4); // Changed all() to simplePaginate()
 
-        $categories = Category::all();
+        $categories = $client->categories;
 
         return view('task_views.tasks', compact('tasks', 'categories'));
     }
@@ -28,7 +29,9 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        Task::create($request->all());
+
+        $client = Auth::user();
+        Client::find($client->id)->tasks()->create($request->all());
 
         return redirect()->route('task.create');
 
@@ -72,7 +75,7 @@ class TaskController extends Controller
     {
         $task = Task::findOrFail($id);
         $task->delete();
-        
+
         return redirect()->route('task.create');
     }
 }

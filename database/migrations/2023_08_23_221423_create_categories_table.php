@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::connection('task_manager')->create('categories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('client_id');
+            
             $table->string('name');
             $table->timestamps();
+
+            $table->foreign('client_id')->references('id')->on('clients');
         });
     }
 

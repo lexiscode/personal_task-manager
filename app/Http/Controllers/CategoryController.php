@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Client;
+use Illuminate\Support\Facades\Auth;
+
 
 class CategoryController extends Controller
 {
@@ -13,8 +16,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-
-        $categories = Category::simplePaginate(4);
+        $client = Auth::user();
+        $categories = Client::find($client->id)->categories()->simplePaginate(4);
 
         return view('category_views.category', compact('categories'));
     }
@@ -24,7 +27,8 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create($request->all());
+        $client = Auth::user();
+        Client::find($client->id)->categories()->create($request->all());
 
         return redirect()->route('category.create');
 
