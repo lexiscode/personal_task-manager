@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{ asset("css/home.css") }}">
 @endsection
 
+
 @section('homepage')
 
 <div class="welcome-container">
@@ -19,3 +20,7 @@
 
 @endsection
 
+
+@section('home-js')
+    <script src='{{ asset("js/home_rain.js") }}' async></script>
+@endsection

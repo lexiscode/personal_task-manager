@@ -32,7 +32,8 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script src='{{ asset("js/home_rain.js") }}' async></script>
+    <script src="{{ asset("js/filter.js") }}"></script>
+    @yield('home-js')
 
 </body>
 </html>
