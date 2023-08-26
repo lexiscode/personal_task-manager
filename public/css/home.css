@@ -1,8 +1,32 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0;
+    min-height: 100vh;
     padding: 0;
     font-family: 'Helvetica Neue', sans-serif;
     background-color: #f4f7f9;
+}
+
+.todo{
+    position: fixed;
+    top: -1vh;
+    font-size: 2rem;
+    transform: translateY(0);
+    animation: fall 3s linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform: translateY(105vh);
+    }
 }
 
 .welcome-container {

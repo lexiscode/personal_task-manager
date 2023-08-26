@@ -1,7 +1,11 @@
 @extends('layout.master')
 
-@section('homepage')
 
+@section('home-styles')
+    <link rel="stylesheet" href="{{ asset("css/home.css") }}">
+@endsection
+
+@section('homepage')
 
 <div class="welcome-container">
     <h1>Welcome to Your Personal Task Manager</h1>
