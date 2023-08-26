@@ -38,7 +38,7 @@ class RegisterController extends Controller
         ]);
 
         // Adds a success message or redirect the user after successful registration
-        return redirect()->route('client.signin')->with('success', 'Registration successful! You can now log in.');
+        return redirect()->route('client.signin')->with('success', 'Registration successful!');
     }
 }
 

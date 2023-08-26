@@ -1,5 +1,10 @@
 @extends('layout.master')
 
+@section('register-login-styles')
+    <link rel="stylesheet" href="{{ asset("css/signinup.css") }}">
+@endsection
+
+
 @section('login')
 
 <div class="container mt-5">
@@ -35,7 +40,7 @@
                 </div>
 
                 <br>
-                <button type="submit" class="btn btn-primary btn-register">Sign In</button>
+                <button type="submit" class="btn-register">Sign In</button>
             </form>
 
         </div>
