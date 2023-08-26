@@ -12,8 +12,7 @@ body{
     min-height: 100vh;
     padding: 0;
     font-family: 'Helvetica Neue', sans-serif;
-    background-color: #FFD700;
-    /*#f4f7f9*/
+    background-color: #FFC400;
 }
 
 .todo{
