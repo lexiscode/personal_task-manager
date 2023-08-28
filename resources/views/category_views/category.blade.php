@@ -32,7 +32,6 @@
             <thead style="text-align: center">
                 <tr>
 
-                <th scope="col">#ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Action</th>
 
@@ -48,7 +47,6 @@
                     @foreach ($categories as $category)
 
                         <tr>
-                            <td>{{ $category->id }}</td>
                             <td>{{ $category->name }}</td>
 
                             <td>
