@@ -65,7 +65,7 @@ class CategoryController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * NB: Just chose to use an alternative delete() style method, unlike in the one in my TaskController
+     * NB: Just chose to use an alternative destory() style method, unlike in the one in my TaskController
      */
     public function destroy(Category $category)
     {
