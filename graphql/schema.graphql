@@ -6,9 +6,9 @@ type Query
     categories: [Category!]! @all
 
     # Fetching all collection by pagination, from the database
-    tasks: [Task!]! @paginate
-    clients: [Client!]! @paginate
-    categories: [Category!]! @paginate
+    #tasks: [Task!]! @paginate
+    #clients: [Client!]! @paginate
+    #categories: [Category!]! @paginate
 
     # Fetching specific collection from the database
     task(id: ID @eq): Task @find
