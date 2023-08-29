@@ -17,7 +17,9 @@ class CategoryController extends Controller
     public function create()
     {
         $client = Auth::user();
-        $categories = Client::find($client->id)->categories()->simplePaginate(4);
+        $categories = Client::find($client->id)->categories()
+                                                ->orderBy('created_at', 'desc')
+                                                ->simplePaginate(4);
 
         return view('category_views.category', compact('categories'));
     }
