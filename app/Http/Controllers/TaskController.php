@@ -17,7 +17,9 @@ class TaskController extends Controller
     public function create()
     {
         $client = Auth::user();
-        $tasks = Client::find($client->id)->tasks()->simplePaginate(4); // Changed all() to simplePaginate()
+        $tasks = Client::find($client->id)->tasks()
+                                        ->orderBy('created_at', 'desc')
+                                        ->simplePaginate(4); // Changed all() to simplePaginate()
 
         $categories = $client->categories;
 
