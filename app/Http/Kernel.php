@@ -64,8 +64,10 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        
+
+        //logged in user cant access non-logged in users routes
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        // non-logged in user cant access logged in users routes
         'auth.check' => \App\Http\Middleware\AuthCheck::class,
     ];
 }
